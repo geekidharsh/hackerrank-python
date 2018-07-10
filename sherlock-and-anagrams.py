@@ -1,19 +1,18 @@
 # https://www.hackerrank.com/challenges/sherlock-and-anagrams
 cases = int(input())
 for caseNo in range(cases):
-    s = input()
     n = len(s)
-    res = 0
+    word_counter = {}
+    result = 0
+
     for l in range(1, n):
-        cnt = {}
-        for i in range(n - l + 1):
-            subs = list(s[i:i + l])
-            subs.sort()
-            subs = ''.join(subs)
-            if subs in cnt:
-                cnt[subs] += 1
-            else:
-                cnt[subs] = 1
-            res += cnt[subs] - 1
-    print(res)
-            
+        for i in range(n-l+1):
+            substring = list(s[i:i+l])
+            substring = sorted(substring)
+            substring = ''.join(substring) 
+            if substring in word_counter:
+                word_counter[substring] += 1
+                result += 1
+            else: 
+                word_counter[substring] = 1
+    print(result)
